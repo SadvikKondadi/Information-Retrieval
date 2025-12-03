@@ -49,3 +49,62 @@ The project includes document parsing, index construction, TF–IDF weighting, v
 ├── vsm_output_titlenarr.txt
 
 └── README.md
+
+
+---
+
+## 📘 Phase 1 – Text Parsing
+Processes FT documents by:
+
+- Extracting **DOCNO**  
+- Lowercasing  
+- Tokenizing  
+- Removing stopwords  
+- Applying **Porter Stemming**  
+- Saving cleaned terms to `parser_output.txt`
+
+This output is the basis for indexing.
+
+---
+
+## 📗 Phase 2 – Index Construction  
+Builds all required index structures:
+
+### **Dictionary**
+Maps terms → termIDs  
+
+### **Forward Index**
+Stores `(termID, tf)` for each document  
+
+### **Inverted Index**
+Stores posting lists `(docID, tf)` for each term  
+
+### Output Files
+- `dictionary.txt`  
+- `forward_index.txt`  
+- `inverted_index.txt`
+
+TF data stored here is used in Phase 3 to compute TF–IDF.
+
+---
+
+## 📙 Phase 3 – Query Processing (Vector Space Model)
+
+### Query Handling
+- Reads queries from `topics.txt`  
+- Supports modes: **title**, **titledesc**, **titlenarr**  
+- Preprocesses queries (tokenization → stopword removal → stemming)
+
+### Scoring & Ranking
+- Computes TF–IDF for documents and queries  
+- Calculates cosine similarity using posting lists  
+- Ranks documents by similarity score  
+- Converts internal docIDs → FT IDs using `docids.txt`  
+
+### Run Commands
+```bash
+javac QueryProcessor.java
+
+java QueryProcessor title vsm_output_title.txt
+java QueryProcessor titledesc vsm_output_titledesc.txt
+java QueryProcessor titlenarr vsm_output_titlenarr.txt
