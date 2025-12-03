@@ -1,0 +1,4 @@
+Topics_evaluated: 41
+Mean_Precision: 0.0217
+Mean_Recall: 0.0186
+Mean_F1: 0.0121
