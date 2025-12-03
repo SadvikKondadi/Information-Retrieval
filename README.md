@@ -108,3 +108,62 @@ javac QueryProcessor.java
 java QueryProcessor title vsm_output_title.txt
 java QueryProcessor titledesc vsm_output_titledesc.txt
 java QueryProcessor titlenarr vsm_output_titlenarr.txt
+
+### Output Format
+
+<QueryID> <DOCNO> <Rank> <Score>
+
+
+Three output files are generated:
+- `vsm_output_title.txt`
+- `vsm_output_titledesc.txt`
+- `vsm_output_titlenarr.txt`
+
+Each corresponds to a different query interpretation mode.
+
+---
+
+## 📊 Evaluation
+Evaluation is performed using **main.qrels** and standard IR performance metrics:
+
+### Metrics:
+- **Precision**  
+- **Recall**  
+- **Query-by-query performance comparison**  
+- Comparison across:
+  - Title-only queries  
+  - Title + Description queries  
+  - Title + Narrative queries  
+
+### Observed Results:
+- **Title-only:** Fastest but lowest recall  
+- **Title + Description:** Best overall balance and highest precision  
+- **Title + Narrative:** Highest recall but introduces more noise  
+
+---
+
+## 🛠️ Technologies Used
+- **Java** (core implementation language)  
+- **Porter Stemmer** for term normalization  
+- **Vector Space Model (VSM)** for document ranking  
+- **Cosine Similarity** for relevance scoring  
+- **TREC FT Collection** for evaluation  
+- **TREC Relevance Judgments (qrels)** for performance measurement  
+
+---
+
+## 📝 Notes
+- Index files store **only term frequencies (tf)**; **idf is computed at runtime**.  
+- Query processing applies the **same preprocessing** as document parsing (tokenization, stopword removal, stemming).  
+- `docids.txt` maps internal numeric docIDs to **FT document IDs** such as `FT911-4016`.  
+- Cosine similarity is computed efficiently using **posting lists** from the inverted index.  
+- Output strictly follows TREC evaluation format for compatibility with scoring tools.
+
+---
+
+## 👤 Author
+**Sadvik Kondadi**  
+CSCE 5200 – Information Retrieval  
+
+---
+
