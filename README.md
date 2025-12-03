@@ -23,16 +23,29 @@ The project includes document parsing, index construction, TF–IDF weighting, v
 
 ## 📁 Project Structure
 ├── TextParser.java
+
 ├── Indexer.java
+
 ├── QueryProcessor.java
+
 ├── dictionary.txt
+
 ├── forward_index.txt
+
 ├── inverted_index.txt
+
 ├── stopwordlist.txt
+
 ├── topics.txt
+
 ├── main.qrels
+
 ├── docids.txt
+
 ├── vsm_output_title.txt
+
 ├── vsm_output_titledesc.txt
+
 ├── vsm_output_titlenarr.txt
+
 └── README.md
