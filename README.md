@@ -108,6 +108,8 @@ javac QueryProcessor.java
 java QueryProcessor title vsm_output_title.txt
 java QueryProcessor titledesc vsm_output_titledesc.txt
 java QueryProcessor titlenarr vsm_output_titlenarr.txt
+```
+
 
 ### Output Format
 
